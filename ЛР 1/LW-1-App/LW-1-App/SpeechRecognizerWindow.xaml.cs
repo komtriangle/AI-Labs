@@ -22,6 +22,7 @@ namespace LW_1_App
         private async void ChooseFileBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog chooseFileDialog = new OpenFileDialog();
+            chooseFileDialog.Filter = "Audio Files|*.mp3;*.wav;*.opus;*.ogg...";
             if (chooseFileDialog.ShowDialog() == true)
             {
                 if (!FilePathValidator.ValidatePath(chooseFileDialog.FileName, out string message))
@@ -60,6 +61,7 @@ namespace LW_1_App
             if (string.IsNullOrEmpty(_filePath))
             {
                 MessageBox.Show("Необоходимо выбрать файл для распознавания", "Ошибка");
+                enableButtions();
                 return;
             }
             try

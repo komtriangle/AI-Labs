@@ -10,5 +10,6 @@ namespace LW_1_Core.Azure
     {
         public string SubscriptionKey { get; set; }
         public string ServiceRegion { get; set; }
+        public string Language { get; set; }
     }
 }

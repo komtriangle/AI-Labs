@@ -6,17 +6,28 @@
         xmlns:local="clr-namespace:LW_1_App"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Распознавание аудио" Height="450" Width="800">
+        ResizeMode="CanResizeWithGrip"
+        Title="Распознавание аудио" Height="450" Width="800"
+        MinWidth="770"
+        MinHeight="450">
     <Grid>
-        <Button x:Name="ChooseFileBtn" Content="Выбрать файл" HorizontalAlignment="Left" Margin="47,44,0,0" VerticalAlignment="Top" Click="ChooseFileBtn_Click"/>
-        <TextBox x:Name="RecognizedSpechTextBox" HorizontalAlignment="Left" Margin="47,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="598" Height="140" RenderTransformOrigin="0.491,0.476"/>
-        <Label x:Name="resultLabel" Content="Результат распознавания" HorizontalAlignment="Left" Margin="47,175,0,0" VerticalAlignment="Top" Width="353"/>
-        <Button x:Name="AzureRecoginizeBtn" Content="Azure" HorizontalAlignment="Left" Margin="47,100,0,0" VerticalAlignment="Top" Width="81" Height="60" Click="AzureRecoginizeBtn_Click" Background="#FF281AD6"/>
-        <Label x:Name="FileNameTextLabel" Content="" HorizontalAlignment="Left" Margin="150,41,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="YandexRecoginizeBtn" Content="Yandex" HorizontalAlignment="Left" Margin="155,100,0,0" VerticalAlignment="Top" Height="60" Width="81" Background="#FFFDFF00" Click="YandexRecoginizeBtn_Click"/>
-        <Button x:Name="HoundifyRecoginizeBtn" Content="Houndify" HorizontalAlignment="Left" Margin="266,100,0,0" VerticalAlignment="Top" Width="80" Height="60" Click="HoundifyRecoginizeBtn_Click" Background="#FF00FF4A"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="251*"/>
+            <ColumnDefinition Width="549*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Border
+               BorderBrush="#3A4149"
+                BorderThickness="5" Grid.ColumnSpan="2" Background="#FF36393E"/>
+        <Button x:Name="ChooseFileBtn" Content="Выбрать файл" HorizontalAlignment="Left" Margin="47,44,0,0" VerticalAlignment="Top" Click="ChooseFileBtn_Click" Background="#FF8482DE" Foreground="White"/>
+        <TextBox x:Name="RecognizedSpechTextBox" FontFamily="Microsoft Sans Serif" BorderThickness="3" BorderBrush="#3A4149" Foreground="White" Background="#FF36393E" Margin="47,194,103,65" TextWrapping="Wrap"  RenderTransformOrigin="0.491,0.476" Grid.ColumnSpan="2"/>
+        <Label x:Name="resultLabel" FontFamily="Microsoft Sans Serif" FontWeight="Bold" Foreground="White" Content="Результат распознавания" HorizontalAlignment="Left" Margin="47,159,0,0" VerticalAlignment="Top" Width="353" Grid.ColumnSpan="2"/>
+        <Button x:Name="AzureRecoginizeBtn" FontFamily="Microsoft Sans Serif" FontWeight="Bold" Foreground="White" Content="Azure" HorizontalAlignment="Left" Margin="49,82,0,0" VerticalAlignment="Top" Width="81" Height="60" Click="AzureRecoginizeBtn_Click" Background="#FF281AD6"/>
+        <Label x:Name="FileNameTextLabel" FontFamily="Microsoft Sans Serif" FontWeight="Bold" Foreground="White" Content="" HorizontalAlignment="Left" Margin="150,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.8,0.002"/>
+        <Button x:Name="YandexRecoginizeBtn" FontFamily="Microsoft Sans Serif" FontWeight="Bold" Foreground="White" Content="Yandex" Margin="150,82,16,0" VerticalAlignment="Top" Height="60" Width="85" Background="#FFB99B0D" Click="YandexRecoginizeBtn_Click"/>
+        <Button x:Name="HoundifyRecoginizeBtn" FontFamily="Microsoft Sans Serif" FontWeight="Bold" Foreground="White" Content="Houndify" HorizontalAlignment="Left" Margin="15,82,0,0" VerticalAlignment="Top" Width="80" Height="60" Click="HoundifyRecoginizeBtn_Click" Background="#FF008226" RenderTransformOrigin="0.5,0.5" Grid.Column="1"/>
 
-        <Grid x:Name="LoadSpinner"  Margin="10,20,30,20"  Visibility="Hidden">
+        <Grid x:Name="LoadSpinner"  Margin="10,20,30,20"  Visibility="Hidden" Grid.ColumnSpan="2">
             <fa:ImageAwesome Icon="Refresh" Spin="True" Height="48" Width="48" Margin="328,243,384,103" Visibility="Visible" />
         </Grid>
 

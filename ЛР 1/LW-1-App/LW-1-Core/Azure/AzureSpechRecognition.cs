@@ -36,35 +36,29 @@ namespace LW_1_Core.Azure
                        ex.Message);
             }
 
-            var speechConfig = SpeechConfig.FromSubscription(_config.SubscriptionKey, _config.ServiceRegion);
-            speechConfig.SpeechRecognitionLanguage = "en-US";
-
-            SpeechRecognitionResult result;
             try
             {
-                using var audioConfig = AudioConfig.FromWavFileInput(pathToFile);
-                using var speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
-                result = await speechRecognizer.RecognizeOnceAsync();
+                var requester = new AzureApiResuster(_config, pathToFile);
+                AzureResponse response = await requester.SendRequest();
+                if(response!= null && response.RecognitionStatus == "Success")
+                {
+                    return new SpechResponse(ResponseTypes.Recognized, response.DisplayText,
+                      String.Empty);
+                }
+                else
+                {
+                    return new SpechResponse(ResponseTypes.NoMatch, String.Empty,
+                     String.Empty);
+                }
             }
-            catch (Exception)
+            catch(Exception ex)
             {
-                return new SpechResponse(ResponseTypes.Error, string.Empty, "Ошибка во время распознавания");
+                return new SpechResponse(ResponseTypes.Error, string.Empty,
+                       ex.Message);
             }
-            return outputSpeechRecognitionResult(result);
+
         }
 
-        private SpechResponse outputSpeechRecognitionResult(SpeechRecognitionResult speechRecognitionResult)
-        {
-            switch (speechRecognitionResult.Reason)
-            {
-                case ResultReason.RecognizedSpeech:
-                    return new SpechResponse(ResponseTypes.Recognized, speechRecognitionResult.Text);
-                case ResultReason.NoMatch:
-                    return new SpechResponse(ResponseTypes.NoMatch);
-                default:
-                    return new SpechResponse(ResponseTypes.Error);
-            }
-        }
 
         private void changeExtension(ref string pathToFile)
         {

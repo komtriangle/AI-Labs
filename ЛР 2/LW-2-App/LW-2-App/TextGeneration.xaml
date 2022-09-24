@@ -1,0 +1,22 @@
+﻿<Window x:Class="LW_2_App.TextGeneration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:LW_2_App"
+        mc:Ignorable="d"
+        Title="Генерация текста ruGPT-3" Height="450" Width="800">
+    <Grid>
+
+        
+        <TextBox x:Name="startPhrase_TextBox" HorizontalAlignment="Left" Margin="79,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" Height="40"/>
+        <Button x:Name="complementText_Btn" Content="Дополнить" HorizontalAlignment="Left" Margin="79,125,0,0" VerticalAlignment="Top" Width="79" Height="27" Click="complementText_Btn_Click"/>
+        <TextBox x:Name="resultText_TextBox" HorizontalAlignment="Left" Margin="79,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="681" Height="213"/>
+
+        <Grid x:Name="LoadSpinner"  Margin="10,20,30,20"  Visibility="Hidden">
+            <fa:ImageAwesome Icon="Refresh" Spin="True" Height="48" Width="48" Margin="328,243,384,103" Visibility="Visible" />
+        </Grid>
+        
+    </Grid>
+</Window>

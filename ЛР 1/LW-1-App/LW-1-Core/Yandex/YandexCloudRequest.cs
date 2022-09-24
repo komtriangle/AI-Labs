@@ -90,7 +90,7 @@ namespace LW_1_Core.Yandex
 
         private Uri createUri()
         {
-            string uri = $"{_configuration.ApiUrl}/stt:recognize?topic=general&lang=en-US&folderId={_configuration.FolderId}";
+            string uri = $"{_configuration.ApiUrl}/stt:recognize?topic=general&lang={_configuration.Language}&folderId={_configuration.FolderId}";
             return new Uri(uri);
         }
     }

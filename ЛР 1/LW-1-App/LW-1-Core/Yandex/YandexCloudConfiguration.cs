@@ -13,5 +13,6 @@ namespace LW_1_Core.Yandex
         /// Id каталога
         /// </summary>
         public string FolderId { get; set; }
+        public string Language { get; set; }
     }
 }

@@ -24,13 +24,14 @@ namespace LW_1_Core.Utils
             {
                 return;
             }
-            var command = $"ffmpeg -i \"{sourcePath}\" \"{newPath}\"";
+
+     
+            var command = $"ffmpeg -i \"{Path.GetFullPath(sourcePath)}\" \"{newPath}\"";
             runPowershellCommand(command);
         }
 
         private static void runPowershellCommand(string command)
         {
-
             var powerShellCommand = new ProcessStartInfo()
             {
                 FileName = "powershell.exe",
